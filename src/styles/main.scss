@@ -1,14 +1,4 @@
-$main-color: #3b82f6;
+@import "bootstrap/scss/bootstrap";
 
-body {
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  h1 {
-    color: $main-color;
-    // Demo Autoprefixera: w zbudowanym CSS pojawi się też -webkit-user-select
-    user-select: none;
-  }
-}
+$white: #ffffff;
+$black: #000000;

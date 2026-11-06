@@ -1,3 +1,2 @@
-import './styles/main.scss';
-
-console.log('Działa!');
+import "./styles/main.scss";
+import * as bootstrap from "bootstrap";
