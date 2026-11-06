@@ -2,3 +2,264 @@
 
 $white: #ffffff;
 $black: #000000;
+
+// ==========================================================================
+// Blok: site-nav (nawigacja główna)
+// Nazwa bloku to NIE "nav" ani "navbar", bo te klasy istnieją w Bootstrapie.
+// ==========================================================================
+
+$site-nav-color: #fff;
+$site-nav-bg-from: #8a5a3d;
+$site-nav-bg-to: #b17b52;
+$site-nav-font: 'Red Hat Display', sans-serif;
+$site-nav-breakpoint: 1240px;
+
+@mixin site-nav-desktop {
+  @media (min-width: $site-nav-breakpoint) {
+    @content;
+  }
+}
+
+.site-nav {
+  font-family: $site-nav-font;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: $site-nav-color;
+  background: linear-gradient(110deg, $site-nav-bg-from 0%, $site-nav-bg-to 100%);
+
+  // --- Kontener i logo ----------------------------------------------------
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1400px;
+    margin-inline: auto;
+    padding: 1rem;
+  }
+
+  &__logo {
+    color: inherit;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      color: inherit;
+    }
+  }
+
+  // --- Hamburger (tylko mobile/tablet) ------------------------------------
+  &__toggler {
+    padding: 0.25rem;
+    color: inherit;
+    line-height: 0;
+    background: none;
+    border: 0;
+
+    &:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 2px;
+    }
+
+    @include site-nav-desktop {
+      display: none;
+    }
+  }
+
+  // --- Zwijane menu -------------------------------------------------------
+  &__menu {
+    flex-basis: 100%;
+    padding-top: 1rem;
+
+    @include site-nav-desktop {
+      display: flex !important; // na desktopie menu jest zawsze widoczne
+      flex-basis: auto;
+      flex-grow: 1;
+      align-items: center;
+      padding-top: 0;
+    }
+  }
+
+  // --- Listy --------------------------------------------------------------
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include site-nav-desktop {
+      flex-direction: row;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    &--main {
+      @include site-nav-desktop {
+        margin-left: 2rem;
+      }
+    }
+
+    &--actions {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      @include site-nav-desktop {
+        gap: 1.25rem;
+        margin-top: 0;
+        margin-left: auto;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  // --- Linki --------------------------------------------------------------
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s;
+    font-weight: 700;
+    font-size: 14px;
+
+    @include site-nav-desktop {
+      padding: 0.5rem 0.75rem;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: inherit;
+      opacity: 0.75;
+    }
+
+    &--active {
+      font-weight: 700;
+    }
+
+    // Chevron przy linkach z podmenu
+    &--dropdown::after {
+      content: '';
+      width: 0.4em;
+      height: 0.4em;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: translateY(-0.1em) rotate(45deg);
+      transition: transform 0.2s;
+    }
+
+    &--dropdown[aria-expanded='true']::after {
+      transform: translateY(0.1em) rotate(-135deg);
+    }
+
+    &--cta {
+      white-space: nowrap;
+    }
+
+    &--icon {
+      padding-inline: 0;
+    }
+  }
+
+  &__icon {
+    display: block;
+    flex-shrink: 0;
+  }
+
+  // --- Podmenu (dropdown) -------------------------------------------------
+  &__submenu {
+    position: static;
+    min-width: 12rem;
+    margin: 0;
+    padding: 0 0 0 1rem;
+    color: inherit;
+    font-size: inherit;
+    list-style: none;
+    background: transparent;
+    border: 0;
+
+    @include site-nav-desktop {
+      position: absolute;
+      padding: 0.5rem 0;
+      background-color: $site-nav-bg-from;
+      border-radius: 0.5rem;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &__submenu-link {
+    display: block;
+    padding: 0.4rem 0.75rem;
+    color: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+
+    @include site-nav-desktop {
+      padding: 0.4rem 1rem;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: inherit;
+      background-color: rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  // --- Wyszukiwarka -------------------------------------------------------
+  &__search {
+    position: relative;
+    margin-block: 1rem;
+
+    @include site-nav-desktop {
+      width: 240px;
+      margin: 0 0 0 2rem;
+    }
+  }
+
+  &__search-input {
+    width: 100%;
+    height: 36px;
+    padding: 0 2.5rem 0 1rem;
+    color: inherit;
+    font: inherit;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50rem;
+    outline: 0;
+    appearance: none;
+
+    &::placeholder {
+      color: inherit;
+      opacity: 1;
+      font-weight: 700;
+    }
+
+    &:focus {
+      border-color: $site-nav-color;
+    }
+  }
+
+  &__search-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 1rem 0 0;
+    color: inherit;
+    background: none;
+    border: 0;
+  }
+}
