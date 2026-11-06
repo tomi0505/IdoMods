@@ -41,9 +41,28 @@ module.exports = {
           },
         ],
       },
+      // Zastąp swoją obecną regułę dla obrazków tym zapisem:
       {
-        test: /\.(png|jpe?g|gif|svg|webp)$/i,
+        test: /\.(png|jpe?g|gif|webp)$/i, // Usunęliśmy stąd svg
         type: "asset/resource",
+        generator: {
+          filename: "images/[name].[hash][ext][query]",
+        },
+      },
+      {
+        // Osobna reguła dla plików SVG, która ignoruje inline-data z Bootstrapa
+        test: /\.svg$/i,
+        type: "asset/resource",
+        exclude: /node_modules/, // WAŻNE: zapobiega psuciu ikon Bootstrapa
+        generator: {
+          filename: "images/[name].[hash][ext][query]",
+        },
+      },
+
+      {
+        // NOWOŚĆ: Reguła dla plików HTML, która zmusza Webpacka do czytania tagów <img>
+        test: /\.html$/i,
+        loader: "html-loader",
       },
     ],
   },

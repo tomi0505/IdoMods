@@ -263,3 +263,13 @@ $site-nav-breakpoint: 1240px;
     border: 0;
   }
 }
+
+// #SLIDER#
+// Dodaliśmy klasy strzałek na końcu selektora
+.custom-carousel,
+.custom-carousel .carousel-inner,
+.custom-carousel .carousel-item,
+.custom-carousel .carousel-control-prev,
+.custom-carousel .carousel-control-next {
+  height: calc(100vh - 80px);
+}
