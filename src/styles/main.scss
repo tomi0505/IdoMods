@@ -10,14 +10,28 @@ $grey: #4A4A4A;
 // Nazwa bloku to NIE "nav" ani "navbar", bo te klasy istnieją w Bootstrapie.
 // ==========================================================================
 
-$site-nav-color: #fff;
+$site-nav-color: #ffffff;
 $site-nav-bg-from: #8a5a3d;
 $site-nav-bg-to: #b17b52;
 $site-nav-font: 'Red Hat Display', sans-serif;
-$site-nav-breakpoint: 1240px;
+$site-nav-breakpoint: 1350px;
 
 body {
   font-family: $site-nav-font;
+}
+
+.container {
+  @media(min-width: 1400px) {
+    max-width: 1600px !important;
+  }
+}
+
+.nav-things-container-b {
+  @media(min-width: 1350px) {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 @mixin site-nav-desktop {
@@ -44,7 +58,7 @@ body {
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    max-width: 1400px;
+    max-width: 1600px;
     margin-inline: auto;
     padding: 1rem;
   }
@@ -235,6 +249,10 @@ body {
     @include site-nav-desktop {
       width: 240px;
       margin: 0 0 0 2rem;
+    }
+
+    @media(min-width: 768px) {
+      max-width: 240px;
     }
   }
 
@@ -470,6 +488,17 @@ $hero-scene-zoom: 1.04; // lekkie powiększenie, żeby ruch tła nie odsłaniał
 }
 
 // #EXTRA#
+.extra-container-b {
+  @media (min-width: 992px) {
+    display: flex;
+    gap: 15px;
+  }
+
+  &--v2 {
+    margin-top: 15px;
+  }
+}
+
 .extra-b {
   display: grid;
   align-content: end;
@@ -517,8 +546,52 @@ $hero-scene-zoom: 1.04; // lekkie powiększenie, żeby ruch tła nie odsłaniał
   }
 
   &--i1 {
-    max-width: 648px;
     height: 518px;
     width: 100%;
+
+    @media(min-width: 992px) {
+      max-width: 648px;
+    }
+  }
+
+  &--i2 {
+    height: 518px;
+    width: 100%;
+
+    &::before {
+      background: url('../images/i2.png') center / cover no-repeat;
+    }
+
+    @media(min-width: 992px) {
+      max-width: 936px;
+    }
+  }
+
+  &--i3 {
+    color: $black;
+    height: 518px;
+    width: 100%;
+
+    &::before {
+      background: url('../images/i3.png') center / cover no-repeat;
+    }
+
+    @media(min-width: 992px) {
+      max-width: 936px;
+    }
+  }
+
+  &--i4 {
+    color: $black;
+    height: 518px;
+    width: 100%;
+
+    &::before {
+      background: url('../images/i4.png') center / cover no-repeat;
+    }
+
+    @media(min-width: 992px) {
+      max-width: 936px;
+    }
   }
 }
