@@ -3,6 +3,7 @@
 $white: #ffffff;
 $black: #000000;
 $yellow: #F2BF25;
+$grey: #4A4A4A;
 
 // ==========================================================================
 // Blok: site-nav (nawigacja główna)
@@ -323,9 +324,11 @@ body {
 
     &:hover,
     &:focus,
+    &:focus-visible,
     &:active {
       color: $black;
-      background-color: lighten($color: $yellow, $amount: 10);
+      background-color: lighten($color: $yellow, $amount: 10) !important;
+      transition: background-color .2s ease-in-out;
     }
   }
 
@@ -463,5 +466,59 @@ $hero-scene-zoom: 1.04; // lekkie powiększenie, żeby ruch tła nie odsłaniał
   &__subtitle {
     font-weight: 500;
     font-size: 14px;
+  }
+}
+
+// #EXTRA#
+.extra-b {
+  display: grid;
+  align-content: end;
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: url('../images/i1.png') center / cover no-repeat;
+    transition: transform 0.5s ease-out;
+  }
+
+  &:hover::before {
+    transform: scale(1.08);
+  }
+
+  &__subtitle {
+    font-weight: 700;
+    font-size: 21px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+  }
+
+  &__btn {
+    padding: 16px 24px;
+    background-color: $black;
+    border-radius: 30px;
+    color: $white;
+    font-size: 16px;
+    font-weight: 700;
+    justify-self: flex-start;
+
+    &:hover {
+      background-color: lighten($color: $grey, $amount: 10) !important;
+      transition: background-color .2s ease-in-out;
+    }
+  }
+
+  &--i1 {
+    max-width: 648px;
+    height: 518px;
+    width: 100%;
   }
 }
