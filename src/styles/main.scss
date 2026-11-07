@@ -446,3 +446,22 @@ $hero-scene-zoom: 1.04; // lekkie powiększenie, żeby ruch tła nie odsłaniał
     }
   }
 }
+
+// #OFFER#
+.offer-container-b {
+  @media(max-width: 767px) {
+    text-align: center;
+  }
+}
+
+.offer-b {
+  &__title {
+    font-size: 21px;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    font-weight: 500;
+    font-size: 14px;
+  }
+}
