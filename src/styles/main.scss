@@ -700,3 +700,33 @@ $hero-scene-zoom: 1.04; // lekkie powiększenie, żeby ruch tła nie odsłaniał
     display: inline-block;
   }
 }
+
+.info-b {
+  border-top: 1px solid #E7E7E7;
+
+  &__col-1 {
+    @media(min-width: 767px) {
+      border-right: 1px solid #E7E7E7;
+    }
+  }
+
+  &__title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1E1E1E;
+  }
+
+  &__our-shops {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    @media(max-width: 767px) {
+      justify-self: center;
+    }
+
+    @media(max-width: 992px) {
+      flex-wrap: wrap;
+    }
+  }
+}
