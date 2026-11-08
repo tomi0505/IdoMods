@@ -662,3 +662,41 @@ $hero-scene-zoom: 1.04; // lekkie powiększenie, żeby ruch tła nie odsłaniał
     font-weight: 500;
   }
 }
+
+// #FOOTER#
+.footer-b {
+  @media(max-width: 767px) {
+    text-align: center;
+  }
+}
+
+.social-b {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+
+  @media(max-width: 767px) {
+    justify-content: center;
+  }
+}
+
+.footer-menu-b {
+  &__title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1E1E1E;
+  }
+
+  &__menu {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+
+  &__menu-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1E1E1E;
+    display: inline-block;
+  }
+}
